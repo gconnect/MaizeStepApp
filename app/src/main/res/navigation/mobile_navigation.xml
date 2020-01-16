@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.chuks.maizestemapp.capturedinsect.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_about"
+        android:name="com.chuks.maizestemapp.AboutFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/capturedInsectFragment"
+        android:name="com.chuks.maizestemapp.capturedinsect.ui.CapturedInsectFragment"
+        android:label="fragment_captured_insect"
+        tools:layout="@layout/fragment_captured_insect" >
+        <action
+            android:id="@+id/action_capturedInsectFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/speciesCategories"
+        android:name="com.chuks.maizestemapp.SpeciesCategories"
+        android:label="fragment_species_categories"
+        tools:layout="@layout/fragment_species_categories" />
+    <fragment
+        android:id="@+id/maizeInsectPlot"
+        android:name="com.chuks.maizestemapp.MaizeInsectPlot"
+        android:label="fragment_maize_insect_plot"
+        tools:layout="@layout/fragment_maize_insect_plot" />
+    <fragment
+        android:id="@+id/controlMeasureFragment"
+        android:name="com.chuks.maizestemapp.ControlMeasureFragment"
+        android:label="fragment_control_measure"
+        tools:layout="@layout/fragment_control_measure" />
+    <fragment
+        android:id="@+id/detailedFragment"
+        android:name="com.chuks.maizestemapp.DetailedFragment"
+        android:label="fragment_detailed"
+        tools:layout="@layout/fragment_detailed" />
+
+</navigation>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MaizeStemApp</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="maize">MAIZE</string>
+    <string name="stem">STEM BORERS</string>
+    <string name="categories">Categories of \nSpodoptera Species</string>
+    <string name="captured_insect">Captured\n Insect</string>
+    <string name="maize_plot">Maize Insect\n Population Plot</string>
+    <string name="title_support">Support</string>
+    <string name="title_share">Share</string>
+    <string name="title_about">About</string>
+    <string name="maize_stem">MAIZE STEM BORERS</string>
+    <string name="description">Maize stem borer app provides the farmer  with infomation to track insects captured in  the farm.   The type of insect that was captured and at what time and location it was captured.  The app also provides information and the control measures to take to help prevent  such occurrences.  The app provides the plot showing the number of insects captured and what time it  was captured</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

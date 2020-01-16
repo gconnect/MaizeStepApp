@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.chuks.maizestemapp.capturedinsect.data.Insect" />
+
+        <variable
+            name="handler"
+            type="com.chuks.maizestemapp.capturedinsect.adapter.BaseRecyclerAdapter.BaseViewHolder" />
+        
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="imageUrl"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/grey"
+        android:orientation="vertical"
+        android:onClick="@{(v) -> handler.onCustomClick(v, position)}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_150"
+            android:layout_margin="@dimen/margin_16"
+            android:background="@color/colorWhite"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/insect_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginRight="@dimen/margin_16"
+                android:src="@{model.insectImage}"
+                app:insect_Image="@{model.insectImage}"
+                app:civ_border_color="#FF000000"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_48"
+                android:text="@{model.name}"
+                android:textColor="@color/textDarkBlue"
+                app:layout_constraintLeft_toRightOf="@id/insect_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@{model.date}"
+                android:textColor="@color/colorLightGreen"
+                app:layout_constraintLeft_toRightOf="@id/insect_image"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:layout_marginRight="@dimen/margin_16"
+                android:text="@{model.time}"
+                android:textColor="@color/colorLightGreen"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
