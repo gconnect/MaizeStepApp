@@ -1,48 +1,76 @@
 package com.chuks.maizestemapp.capturedinsect.ui
 
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.chuks.maizestemapp.DetailedFragment
-import com.chuks.maizestemapp.R
-import com.chuks.maizestemapp.capturedinsect.adapter.BaseRecyclerAdapter
-import com.chuks.maizestemapp.capturedinsect.data.Insect
+import com.chuks.maizestemapp.common.adapter.BaseRecyclerAdapter
+import com.chuks.maizestemapp.common.data.Insect
 import com.chuks.maizestemapp.databinding.FragmentCapturedInsectBinding
+import android.util.Log
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.chuks.maizestemapp.R
+import com.chuks.maizestemapp.capturedinsect.viewmodel.CapturedInsectViewModel
+import com.chuks.maizestemapp.common.util.showToast
+import kotlinx.android.synthetic.main.fragment_captured_insect.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 /**
- * A simple [Fragment] subclass.
+ * This is CapturedInsectFragment. This handles all UI related items
+ * and communicates with the CapturedInsectViewModel
  */
 class CapturedInsectFragment : Fragment() {
 
     private lateinit var capturedInsectRecyclerAdapter: BaseRecyclerAdapter
     private lateinit var binding: FragmentCapturedInsectBinding
-    private lateinit var capturedInsectList: List<Insect>
+    private  var capturedInsectList: List<Insect> = ArrayList()
+    private val TAG : String = "CapturedInsectFragment"
+    private val capturedInsectViewModel by viewModel<CapturedInsectViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_captured_insect, container, false )
+        binding = DataBindingUtil.inflate(inflater,
+           R.layout.fragment_captured_insect, container, false )
 
         initializeRecyclerView()
         setData()
+        showProgress()
+        showMessage()
         capturedInsectRecyclerAdapter.layoutId = R.layout.insect_list_item
         capturedInsectRecyclerAdapter.items = capturedInsectList
+
         capturedInsectRecyclerAdapter.onCustomClickItemListner ={view, position ->
-            Toast.makeText(context, "You clicked $position", Toast.LENGTH_LONG).show()
+
+            val bundle = Bundle()
+            bundle.putInt("position", position )
+            NavHostFragment.findNavController(this)
+                .navigate(R.id.detailedFragment, bundle)
+            context?.showToast("You clicked $position")
         }
+
+        binding.toolbar.setNavigationOnClickListener{
+            findNavController().popBackStack()
+        }
+
         return binding.root
     }
 
+    /**
+    * The [initializeRecyclerView] shows a list of all captured insects
+    */
     fun initializeRecyclerView(){
         binding.captureRecyclerView?.apply {
             layoutManager = LinearLayoutManager(context)
@@ -52,31 +80,41 @@ class CapturedInsectFragment : Fragment() {
         }
     }
 
-    fun setData(){
-        val list = dataSet()
-        capturedInsectList = list
+    /**
+     * The [setData] sets the data on the recyclerview
+     */
+    private fun setData(){
+        capturedInsectViewModel.capturedInsect.observe(viewLifecycleOwner, Observer {
+            Log.d(TAG , "captured $it.size")
+            if(it.isNotEmpty()){
+                captureRecyclerView.visibility = View.VISIBLE
+                capturedInsectRecyclerAdapter.setData(it)
+                emptyState.visibility = View.GONE
+
+            }else{
+                binding.captureRecyclerView.visibility = View.GONE
+                emptyState.visibility = View.VISIBLE
+            }
+        })
     }
 
-
-//Dummy data to be replaced with real data from the api
-
-    fun dataSet() : List<Insect>{
-        val list = ArrayList<Insect>()
-        list.add(Insect(
-            "https://cdn.pixabay.com/photo/2019/05/03/03/09/vietnam-4174969_960_720.jpg",
-            "Fall Armworm", "Portharcourt",
-            "12 01 2020", "12:00PM",1))
-
-        list.add(Insect(
-            "https://cdn.pixabay.com/photo/2019/05/03/03/09/vietnam-4174969_960_720.jpg",
-            "Fall Armworm", "Portharcourt",
-            "12 01 2020", "12:00PM",1))
-
-        list.add(Insect(
-            "https://cdn.pixabay.com/photo/2019/05/03/03/09/vietnam-4174969_960_720.jpg",
-            "Fall Armworm", "Portharcourt",
-            "12 01 2020", "12:00PM",1))
-        return list
+    /**
+     * This shows the progressbar when loading the captured list data
+     */
+    private fun showProgress(){
+        capturedInsectViewModel.showProgress.observe(viewLifecycleOwner, Observer {
+            progressBar.visibility = if(it) View.VISIBLE else View.GONE
+        })
     }
 
+    /**
+     * This shows a toast message when an error occurs
+     */
+    private fun showMessage(){
+        capturedInsectViewModel.showMessage.observe(viewLifecycleOwner, Observer {
+            val message = it
+            context?.showToast(message)
+        })
+    }
 }
+
