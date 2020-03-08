@@ -6,14 +6,94 @@
     <string name="maize">MAIZE</string>
     <string name="stem">STEM BORERS</string>
     <string name="categories">Categories of \nSpodoptera Species</string>
-    <string name="captured_insect">Captured\n Insect</string>
+    <string name="captured_insect">Captured Insect</string>
     <string name="maize_plot">Maize Insect\n Population Plot</string>
     <string name="title_support">Support</string>
     <string name="title_share">Share</string>
     <string name="title_about">About</string>
     <string name="maize_stem">MAIZE STEM BORERS</string>
-    <string name="description">Maize stem borer app provides the farmer  with infomation to track insects captured in  the farm.   The type of insect that was captured and at what time and location it was captured.  The app also provides information and the control measures to take to help prevent  such occurrences.  The app provides the plot showing the number of insects captured and what time it  was captured</string>
+    <string name="description">
+        Maize stemborer App is an android mobile application developed
+        to assist farmers to remotely monitor the infiltration of the aggressive
+        maize insect pests known as spodoptera species
+        (Fall armyworm, African armyworm and Eygptian cotton leafworm) in the farm.\n\n
+        The farmers using android phones would download this app via play store and install it.
+        This platform would enable the farmers visualize these three species and determine their EIL and ET,
+        then apply recommended control measures from Entomologist in order to control the pests in the field.
+    </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fall_army_worm">Fall Armyworm\n(Spodoptera Frugiperda)</string>
+    <string name="egyptian_leafworm">Egyptian Cotton Leafworm\n(Spodoptera Littoralis)</string>
+    <string name="african_armyworm">African Armyworm\n(Spodoptera Exempta)</string>
+    <string name="control_measure">Control Measure</string>
+    <string name="fallArmyWorm">Fall Armyworm</string>
+    <string name="egyptian_worm">Egyptian Armyworm</string>
+    <string name="african_worm">African Armyworm</string>
+    <string name="fallArmyWormControl">Fall Army Worm Control Measure</string>
+    <string name="control">
+        <br> 1.	As soon as your app alerts you of the presence of borer especially FAW, AAW,
+            ECLW or by observing the presence using step 2, proceed to step 3.\n\n</br>
+        <br> 2.	Stem borer scouting for the moths possible presence in maize whorls and
+            other visible signs, when presence of stem borer is established, then quickly move to step 3.\n\n</br>
+        <br>3.  Do not allow moths density population exceed the Economic Threshold (ET) that is,
+            the density of a pest at which control measures should be initiated to prevent an
+            increasing pest population from reaching the Economic Injury Level (EIL) which is the
+            smallest number of stem borers that would cause significant yield losses, proceed to step 4\n\n</br>
+        <br>4.  Suppress the pest population by applying appropriate systemic or contact/systemic
+            insecticide (consult your Agricultural Development Project (ADP) Officer or Crop
+            Protectionist in your locality for appropriate and most suitable and current one
+            in the market). Pursue step 5 with vigour.\n\n</br>
+        <br>5.	For effective, coordinated, and flexible approach to manage alien invasive species
+            such as FAW, AAW, ECLW, scout for its presence as in step 2 and treat your farms as well
+            so as to ensure a wide range coverage. \n\n</br>
+        <br>6.	Ensure farm sanitation and other cultural control measures alongside use of
+            resistant variety and other biological control especially before the onset of planting
+            (Consult relevant ADP Officer and plant Protectionist too).\n\n</br>
+        <br>7.	Leveraging interactions between complementary approaches in order to maximize
+            control of the pest while minimizing potential risks to human and animal health,
+            the environment, and natural enemies of the pest (adhere strictly to the Insecticide
+            manufacturer’s instructions regarding frequency of application, quantity to be applied etc.)
+            NB: consult insecticide data manufacturing sheet for details.\n\n</br>
+        <br>8.	Effective monitoring should synchronize the stem borer count visa viz the maize
+            growth stage. E.g, moth counts can be as low as one moth per day which is enough
+            indication to plan for control. So as to arrest the borer from reaching its egg
+            laying potential. \n\n</br>
+        <br>9.	Base your action on plant growth and other relevant factors such as canopy density,
+            dead heart, signs of infestation e.g. on leaves, should call for immediate chemical
+            control options as in step 4.\n\n</br>
+    </string>
+
+    <string name="egyptian_control">
+
+        <br>\u2022 The following measure should be taken\n</br>
+        <br>\u2022 The following measure should be taken\n</br>
+        <br>\u2022 The following measure should be taken\n</br>
+        <br>\u2022 The following measure should be taken\n</br>
+        <br>\u2022 The following measure should be taken\n</br>
+    </string>
+
+    <string name="african_control">
+        <br>\u2022 The following measure should be taken\n</br>
+        <br>\u2022 The following measure should be taken\n</br>
+        <br>\u2022 The following measure should be taken\n</br>
+        <br>\u2022 The following measure should be taken\n</br>
+        <br>\u2022 The following measure should be taken\n</br>
+        <br>\u2022 The following measure should be taken\n</br>
+    </string>
+    <string name="egyptian_cotton">Egyptian Cotton Leaf Worm Control Measure</string>
+    <string name="african_army_worm">African Army Worm Control Measure</string>
+    <string name="title_policy">Privacy Policy</string>
+    <string name="author">Ezeofor Chukwunazo Joseph</string>
+    <string name="from">From :</string>
+    <string name="author_name">Ezeofor C.J.</string>
+    <string name="insect_density">Insect pests density</string>
+    <string name="time">Time</string>
+    <string name="economic_injury_level">Economic Injury Level</string>
+    <string name="economic_threshold">Economic Threshold</string>
+    <string name="maize_stem_borer">Maize Stem Borers Control Measures</string>
+    <string name="plot_title"><![CDATA[Insect Pests Density Population Plots\n for EIL & ET determination]]></string>
+
+
 </resources>

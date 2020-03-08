@@ -9,6 +9,11 @@
     <color name="colorGreen">#73CBC6</color>
     <color name="colorLightPurple">#796FC6</color>
     <color name="colorPurple">#AF70C9</color>
-    <color name="grey">#F3F4F9</color>
+    <color name="grey">#FCD8D8DD</color>
+    <color name="greyDark">#EEEEEE</color>
     <color name="textDarkBlue">#2F2E41</color>
+    <color name="colorOrange">#F6AE5E</color>
+    <color name="colorAsh">#D9D8D5</color>
+    <color name="colorPink">#E91E62</color>
+
 </resources>

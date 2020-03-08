@@ -1,14 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MaizeInsectPlot">
+    tools:context=".maizestemplot.ui.MaizeInsectPlot">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-</FrameLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:title="@string/maize_plot"
+            app:navigationIcon="@drawable/ic_back"
+            app:titleTextColor="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            />
+    </com.google.android.material.appbar.AppBarLayout>
+    <ProgressBar
+        android:id="@+id/progressBarPlot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plot_title"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBarLayout"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="@dimen/margin_16"
+       />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        android:layout_margin="@dimen/margin_24"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/fall_armyworm_color"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:background="@color/colorBlue"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/lineChart"/>
+
+    <TextView
+        android:id="@+id/fall_armyworm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fallArmyWorm"
+        app:layout_constraintLeft_toRightOf="@id/fall_armyworm_color"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/lineChart"/>
+
+    <TextView
+        android:id="@+id/egyptian_armyworm_color"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:background="@color/colorOrange"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/fall_armyworm_color"/>
+
+    <TextView
+        android:id="@+id/egyptian_leafworm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/egyptian_worm"
+        app:layout_constraintLeft_toRightOf="@id/egyptian_armyworm_color"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/fall_armyworm_color"/>
+
+    <TextView
+        android:id="@+id/african_army_worm_color"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:background="@color/colorLightGreen"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/egyptian_armyworm_color"/>
+
+    <TextView
+        android:id="@+id/african_army_worm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/african_worm"
+        app:layout_constraintLeft_toRightOf="@id/african_army_worm_color"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/egyptian_armyworm_color"/>
+
+    <TextView
+        android:id="@+id/economic_injury_level_color"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_margin="@dimen/margin_16"
+        android:background="@color/colorLightPurple"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/african_army_worm_color" />
+
+    <TextView
+        android:id="@+id/economic_injury_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/economic_injury_level"
+        app:layout_constraintLeft_toRightOf="@id/economic_injury_level_color"
+        android:layout_margin="@dimen/margin_16"
+        app:layout_constraintTop_toBottomOf="@id/african_army_worm_color"/>
+
+    <TextView
+        android:id="@+id/economic_threshold_color"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:background="@color/colorPink"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_60"
+        app:layout_constraintTop_toBottomOf="@id/economic_injury_level_color"/>
+
+    <TextView
+        android:id="@+id/economic_threshold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/economic_threshold"
+        app:layout_constraintLeft_toRightOf="@id/economic_threshold_color"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginBottom="@dimen/margin_60"
+        app:layout_constraintTop_toBottomOf="@id/economic_injury_level_color"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
