@@ -76,9 +76,9 @@ dependencies {
     implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 
     // Room Dependencies
-    implementation "androidx.room:room-runtime:2.2.3"
-    kapt "androidx.room:room-compiler:2.2.3"
-    implementation "androidx.room:room-ktx:2.2.3"
+    implementation "androidx.room:room-runtime:2.2.4"
+    kapt "androidx.room:room-compiler:2.2.4"
+    implementation "androidx.room:room-ktx:2.2.4"
 
     // Koin for Kotlin
     implementation "org.koin:koin-core:2.0.1"

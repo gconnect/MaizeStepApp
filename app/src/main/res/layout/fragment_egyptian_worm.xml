@@ -30,10 +30,12 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:elevation="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/egyptianRecyclerView"
+        app:layout_constraintLeft_toLeftOf="@id/egyptianRecyclerView"
+        app:layout_constraintRight_toRightOf="@id/egyptianRecyclerView"
+        app:layout_constraintTop_toTopOf="@id/egyptianRecyclerView" />
 
     <TextView
         android:id="@+id/emptyState"

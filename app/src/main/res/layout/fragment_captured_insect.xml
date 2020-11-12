@@ -31,10 +31,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:elevation="20dp"
+            app:layout_constraintBottom_toBottomOf="@id/captureRecyclerView"
+            app:layout_constraintLeft_toLeftOf="@id/captureRecyclerView"
+            app:layout_constraintRight_toRightOf="@id/captureRecyclerView"
+            app:layout_constraintTop_toTopOf="@id/captureRecyclerView" />
 
         <TextView
             android:id="@+id/emptyState"
