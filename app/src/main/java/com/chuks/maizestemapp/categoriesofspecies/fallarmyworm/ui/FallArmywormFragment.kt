@@ -67,6 +67,12 @@ class FallArmywormFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        binding.swipe.setOnRefreshListener {
+            setData()
+            showMessage()
+            showProgress()
+            binding.swipe.isRefreshing = false
+        }
         return binding.root
     }
     /**
@@ -85,7 +91,7 @@ class FallArmywormFragment : Fragment() {
      * The [setData] sets the data on the recyclerview
      */
     private fun setData(){
-        fallArmyViewModel.fallArmyList.observe(viewLifecycleOwner, Observer {
+        fallArmyViewModel.fallArmyList("FAW").observe(viewLifecycleOwner, Observer {
             Log.d(TAG , "captured $it")
             if(it.isNotEmpty()){
                 fallRecyclerView.visibility = View.VISIBLE

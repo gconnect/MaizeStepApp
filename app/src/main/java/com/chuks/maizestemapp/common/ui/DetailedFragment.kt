@@ -1,19 +1,28 @@
 package com.chuks.maizestemapp.common.ui
 
 
+import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.chuks.maizestemapp.R
 import com.chuks.maizestemapp.capturedinsect.viewmodel.CapturedInsectViewModel
 import com.chuks.maizestemapp.databinding.FragmentDetailedBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import android.content.Intent
+import timber.log.Timber
+import java.lang.Exception
+import java.lang.NullPointerException
+import java.util.*
+
 
 /**
 * This Detailed Fragment displays the details of each list items
@@ -22,6 +31,8 @@ class DetailedFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailedBinding
     private val capturedInsectViewModel by viewModel<CapturedInsectViewModel>()
+    lateinit var lat : String
+    lateinit  var long : String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,7 +44,7 @@ class DetailedFragment : Fragment() {
         )
 
         binding.back.setOnClickListener { findNavController().popBackStack() }
-        binding.shareFab.setOnClickListener { shareInsect() }
+
         // detailView implementation
         arguments?.let { bundle ->
             bundle.getInt("position")
@@ -44,18 +55,70 @@ class DetailedFragment : Fragment() {
                         Glide.with(this).asBitmap().override(1080, 600)
                             .load(data.insect_image).into(binding.insectImage)
                         binding.title.text = data.name
-                        binding.locationLat.text = data.latitude
-                        binding.locationLong.text = data.longitude
+                        lat = data.latitude
+                        long = data.longitude
+//                        binding.locationLat.text = data.latitude
+//                        binding.locationLong.text = data.longitude
                         binding.timeTv.text = data.time
                         binding.calendar.text = data.date
                         binding.count.text = data.count.toString()
-
+                        getAddress(lat, long)
+                        openLocationOnMap(lat, long)
                     })
-
                 }
         }
-
         return binding.root
+    }
+
+  private  fun getAddress(lat: String, long : String){
+        try {
+            if (lat.isNotEmpty() && long.isNotEmpty()){
+                val geocoder: Geocoder
+                val addresses: List<Address>
+                geocoder = Geocoder(requireContext(), Locale.getDefault())
+                addresses = geocoder.getFromLocation(
+                    lat.toDouble(),
+                    long.toDouble(),
+                    1
+                ) // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+
+                val address: String = addresses[0]
+                    .getAddressLine(0) // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+                    val city: String = addresses[0].getLocality()
+                    val state: String = addresses[0].getAdminArea()
+                    val country: String = addresses[0].getCountryName()
+                    binding.locationTv.text = "$address $state $country"
+
+            }else{
+                Timber.d("No address")
+                binding.locationTv.text = getString(R.string.not_available)
+
+            }
+
+        }catch (e: Exception){
+            Timber.d(e.message)
+        }
+    }
+
+   private fun openLocationOnMap(lat: String, long: String){
+        binding.locationFab.setOnClickListener {
+            try {
+//                    geo:0,0?q=my+street+address
+                if(lat.isNotEmpty() && long.isNotEmpty()){
+                    val uri: String =
+                        java.lang.String.format(Locale.ENGLISH, "geo:%f,%f", lat.toFloat(), long.toFloat())
+
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+                    context?.startActivity(intent)
+                    Timber.d("Lat $lat and $long")
+                }else{
+                    Timber.d("No address")
+                }
+
+            }catch (e: FormatFlagsConversionMismatchException){
+                Timber.d(e.message)
+            }
+        }
     }
 
     /**

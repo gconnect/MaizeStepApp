@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin_16"
                 android:layout_marginTop="@dimen/margin_16"
-                android:text="@{model.date}"
+                android:text="@{model.date.toString()}"
                 tools:text="Date"
                 android:textColor="@color/colorLightGreen"
                 app:layout_constraintLeft_toRightOf="@id/insect_image"

@@ -1,7 +1,10 @@
 package com.chuks.maizestemapp.common.data.remote
 
+import com.chuks.maizestemapp.common.data.Insect
+import com.chuks.maizestemapp.common.data.InsectModel
 import com.chuks.maizestemapp.common.data.InsectResponse
 import com.chuks.maizestemapp.common.data.MaizePlotResponse
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -10,17 +13,21 @@ import retrofit2.http.GET
  **/
 interface MaizeInsectApi {
 
-    @GET("5e6446133400005a003387ef")
-    suspend fun getAllCapturedInsect() : Response<InsectResponse>
+//    @GET("5e6446133400005a003387ef")
+    @GET("dev/mothPredictionAPI?ClassName=ALL")
+    suspend fun getAllCapturedInsect() : Response<List<Insect>>
 
-    @GET("5e6446133400005a003387ef")
-    suspend fun getAfricanArmyWorm() : InsectResponse
+//    @GET("5e6446133400005a003387ef")
+     @GET("dev/mothPredictionAPI/aaw?ClassName=AAW")
+      fun getAfricanArmyWorm() : Response<List<Insect>>
 
-    @GET("5e6446133400005a003387ef")
-    suspend fun getEgyptianArmyWorm() : InsectResponse
+//    @GET("5e6446133400005a003387ef")
+    @GET("dev/mothPredictionAPI/eclw?ClassName=ECLW")
+    suspend fun getEgyptianArmyWorm() : Response<List<Insect>>
 
-    @GET("5e6446133400005a003387ef")
-    suspend fun getFallArmyArmyWorm() : InsectResponse
+//    @GET("5e6446133400005a003387ef")
+    @GET("dev/mothPredictionAPI/faw?ClassName=FAW")
+    suspend fun getFallArmyArmyWorm() : Response<List<Insect>>
 
     @GET("5e4887273000005800294b24")
     suspend fun getInsectPlot() : MaizePlotResponse

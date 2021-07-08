@@ -1,6 +1,7 @@
 package com.chuks.maizestemapp.maizestemplot.repository
 
 import androidx.lifecycle.LiveData
+import com.chuks.maizestemapp.common.data.Insect
 import com.chuks.maizestemapp.common.data.MaizePlot
 
 /**
@@ -11,9 +12,9 @@ interface MaizePlotRepository {
     /**
      * This [getInsect] and return a liveData of MaizePlot
      * */
-    fun getInsect() : LiveData<List<MaizePlot>>
+    fun getInsect(name : String) : LiveData<List<Insect>>
     /**
      * This [requestInsect] and insert into the database
      * */
-    suspend fun requestInsect() : List<MaizePlot>
+    suspend fun requestInsect()
 }

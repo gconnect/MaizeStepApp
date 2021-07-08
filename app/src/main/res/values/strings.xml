@@ -94,6 +94,7 @@
     <string name="economic_threshold">Economic Threshold</string>
     <string name="maize_stem_borer">Maize Stem Borers Control Measures</string>
     <string name="plot_title"><![CDATA[Insect Pests Density Population Plots\n for EIL & ET determination]]></string>
+    <string name="not_available">Not available</string>
 
 
 </resources>

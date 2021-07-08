@@ -2,7 +2,7 @@ package org.wikiedufoundation.wikiedudashboard.di
 
 import android.app.Application
 import androidx.room.Room.databaseBuilder
-import com.chuks.maizestemapp.capturedinsect.dao.CapturedInsectDao
+import com.chuks.maizestemapp.capturedinsect.dao.InsectDao
 import com.chuks.maizestemapp.categoriesofspecies.africanarmyworm.dao.AfricanArmyWormDao
 import com.chuks.maizestemapp.categoriesofspecies.egyptianarmyworm.dao.EgyptianArmyWormDao
 import com.chuks.maizestemapp.categoriesofspecies.fallarmyworm.dao.FallArmyWormDao
@@ -37,7 +37,7 @@ fun provideDatabase(application: Application): InsectDatabase {
 /**
  * Use the [provideCapturedInsectDao] to provide a provideCampaignListDao instance
  * */
-fun provideCapturedInsectDao(database: InsectDatabase): CapturedInsectDao = database.capturedInsectDao
+fun provideCapturedInsectDao(database: InsectDatabase): InsectDao = database.capturedInsectDao
 
 
 /**

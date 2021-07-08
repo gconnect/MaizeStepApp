@@ -18,6 +18,7 @@ interface AfricanArmyWormDao {
     @Query("select * from insect")
     fun getAllAfricanWorm() : LiveData<List<Insect>>
 
+
     /**
      * This [insertAfricanWorm] to the database
      * */

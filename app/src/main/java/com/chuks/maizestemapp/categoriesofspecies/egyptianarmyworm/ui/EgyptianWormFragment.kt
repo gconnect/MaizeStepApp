@@ -65,10 +65,14 @@ class EgyptianWormFragment : Fragment() {
             Toast.makeText(context, "You clicked $position", Toast.LENGTH_LONG).show()
 
         }
-
-
         binding.toolbar.setNavigationOnClickListener{
             findNavController().popBackStack()
+        }
+        binding.swipe.setOnRefreshListener {
+            setData()
+            showMessage()
+            showProgress()
+            binding.swipe.isRefreshing = false
         }
         return binding.root
     }
@@ -89,7 +93,7 @@ class EgyptianWormFragment : Fragment() {
      * The [setData] sets the data on the recyclerview
      */
     private fun setData(){
-        egyptianViewModel.egyptianList.observe(viewLifecycleOwner, Observer {
+        egyptianViewModel.egyptianList("ECLW").observe(viewLifecycleOwner, Observer {
             Log.d(TAG , "captured $it")
             if(it.isNotEmpty()){
                 egyptianRecyclerView.visibility = View.VISIBLE

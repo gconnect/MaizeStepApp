@@ -10,7 +10,7 @@ interface FallArmyWormRepository {
     /**
      * This [getFallArmyWorm] and return a liveData of Insects
      * */
-    fun getFallArmyWorm(): LiveData<List<Insect>>
+    fun getFallArmyWorm(name : String): LiveData<List<Insect>>
 
     /**
      * This [requestFallArmyWorm] and insert into the database

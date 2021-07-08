@@ -11,17 +11,24 @@ import com.chuks.maizestemapp.common.data.Insect
  * This is the Data Access Object (DAO) for captured insect
 * */
 @Dao
-interface CapturedInsectDao {
+interface InsectDao {
 
     /**
      * This is query [getAllCapturedInsect]
      * */
-    @Query("SELECT * from insect")
+    @Query("SELECT * from insect ORDER BY date DESC")
     fun getAllCapturedInsect() : LiveData<List<Insect>>
 
     /**
-     * This [insertAllCapturedInsect] to the database
+     * This [insertAllInsect] to the database
      * */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAllCapturedInsect(insect : List<Insect>)
+    suspend fun insertInsects(insect : List<Insect>?)
+
+
+    /**
+     * Get all captured insect by their name [getAllCapturedInsect]
+     * */
+    @Query("SELECT * FROM Insect WHERE name = :name")
+    fun getInsectByName(name: String): LiveData<List<Insect>>
 }

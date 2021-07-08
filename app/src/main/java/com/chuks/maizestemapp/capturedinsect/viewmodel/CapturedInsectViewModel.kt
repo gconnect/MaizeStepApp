@@ -39,6 +39,4 @@ class CapturedInsectViewModel(private val capturedInsectRepository: CapturedInse
         }
     }
 
-
-
 }

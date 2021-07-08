@@ -1,7 +1,7 @@
 package com.chuks.maizestemapp.capturedinsect.repository
 
 import androidx.lifecycle.LiveData
-import com.chuks.maizestemapp.capturedinsect.dao.CapturedInsectDao
+import com.chuks.maizestemapp.capturedinsect.dao.InsectDao
 import com.chuks.maizestemapp.common.data.Insect
 import com.chuks.maizestemapp.common.data.remote.MaizeInsectApi
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +14,7 @@ import timber.log.Timber
  * */
 class CapturedInsectRepositoryImpl(
     private val maizeInsectApi: MaizeInsectApi,
-    private val capturedInsectDao: CapturedInsectDao
+    private val capturedInsectDao: InsectDao
 ) : CapturedInsectRepository {
 
     /**
@@ -28,16 +28,17 @@ class CapturedInsectRepositoryImpl(
      * This [requestCapturedInsect] is a suspend function which must be called from a coroutine
      * */
     override suspend fun requestCapturedInsect() = withContext(Dispatchers.Main) {
-        val request = maizeInsectApi.getAllCapturedInsect()
+        val response = maizeInsectApi.getAllCapturedInsect()
         try {
-            if (request.isSuccessful) {
-                val capturedList = request.body()?.insect
+            if (response.isSuccessful) {
+                val capturedList = response.body()
+
                 capturedList?.let {
-                    capturedInsectDao.insertAllCapturedInsect(capturedList)
+                    capturedInsectDao.insertInsects(capturedList)
                     Timber.i("fetched insects success $capturedList")
                 }
             } else {
-                Timber.i("request failed due to ${request.errorBody()?.string()}")
+                Timber.i("request failed due to ${response.errorBody()?.string()}")
             }
         } catch (e: Throwable) {
             Timber.i("Throw an exception ${e.message}")

@@ -20,7 +20,7 @@ class FallArmyWormViewModel(private val fallArmyWormRepository: FallArmyWormRepo
     private val _showProgress : MutableLiveData<Boolean> = MutableLiveData()
     val showProgress : LiveData<Boolean> get() = _showProgress
 
-    val fallArmyList = fallArmyWormRepository.getFallArmyWorm()
+    fun fallArmyList(name:String) = fallArmyWormRepository.getFallArmyWorm(name)
 
     init {
 

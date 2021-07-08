@@ -19,7 +19,7 @@ class EgyptianWormViewModel(private val egyptianWormRepository: EgyptianWormRepo
     private val _showProgress : MutableLiveData<Boolean> = MutableLiveData()
     val showProgress : LiveData<Boolean> get() = _showProgress
 
-    val egyptianList = egyptianWormRepository.getEgyptianArmyWorm()
+    fun egyptianList(name:String) = egyptianWormRepository.getEgyptianArmyWorm(name)
 
     init {
 

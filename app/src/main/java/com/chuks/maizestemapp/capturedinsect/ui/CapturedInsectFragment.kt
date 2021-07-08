@@ -1,6 +1,5 @@
 package com.chuks.maizestemapp.capturedinsect.ui
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +22,7 @@ import com.chuks.maizestemapp.capturedinsect.viewmodel.CapturedInsectViewModel
 import com.chuks.maizestemapp.common.util.showToast
 import kotlinx.android.synthetic.main.fragment_captured_insect.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 
 /**
@@ -64,7 +64,12 @@ class CapturedInsectFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener{
             findNavController().popBackStack()
         }
-
+        binding.swipe.setOnRefreshListener {
+            setData()
+            showMessage()
+            showProgress()
+            binding.swipe.isRefreshing = false
+        }
         return binding.root
     }
 

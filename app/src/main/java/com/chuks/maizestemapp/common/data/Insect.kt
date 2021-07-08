@@ -1,24 +1,45 @@
 package com.chuks.maizestemapp.common.data
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.chuks.maizestemapp.common.TimestampConverter
+import com.chuks.maizestemapp.common.util.TimeStampConverter
+import com.google.gson.annotations.SerializedName
 import java.util.*
 /**
  * This is the [Insect] data class
  * */
-@Entity(tableName = "insect")
+@Entity(tableName = "insect",indices = [Index(value = ["classPredictionId"], unique = true)])
 data class Insect(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     var id : Int,
+    @SerializedName("ImageURL_ClassName")
     var insect_image: String,
+    @SerializedName("ClassName")
     var name: String,
+    @SerializedName("ClassPredictionID")
+    var classPredictionId: String,
+    @SerializedName("Latitude")
     var latitude: String,
+    @SerializedName("Longitude")
     var longitude: String,
+//    @TypeConverters(TimeStampConverter::class)
+    @SerializedName("PredictionDate")
     var date: String,
+    @SerializedName("CaptureTime")
     var time: String,
-    var count: Int
+    @SerializedName("Count_ClassName")
+    var count: Int,
+    @SerializedName("ET")
+    var economic_threshold: Double = 2.4,
+    @SerializedName("EIL")
+    var economic_injury_level: Double = 3.6
+
 ){
-    constructor() : this(0, "", "", "", "", "", "", 0)
+    constructor() : this(0, "", "", "", "",
+        "", "", "",  0, 2.4, 3.6)
 }
 
 /**
@@ -35,5 +56,23 @@ data class MaizePlot(
     val economic_threshold: String
 )
 
+
+data class InsectModel(
+    @SerializedName("ClassPredictionID")
+    var classPredictionId: String,
+    @SerializedName("ImageURL_ClassName")
+    var insect_image: String,
+    @SerializedName("ClassName")
+    var name: String,
+    @SerializedName("PredictionDate")
+    var date: String,
+    @SerializedName("CaptureTime")
+    var time: String,
+    @SerializedName("Count_ClassName")
+    var count: Int
+){
+    constructor() : this("", "", "", "", "",
+        0)
+}
 
 

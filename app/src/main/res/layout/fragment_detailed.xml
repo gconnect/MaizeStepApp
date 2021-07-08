@@ -43,80 +43,13 @@
 
             </FrameLayout>
 
-
-            <ImageView
-                android:id="@+id/locationIcon"
-                android:layout_width="@dimen/size_30"
-                android:layout_height="@dimen/size_30"
-                android:layout_margin="@dimen/margin_16"
-                app:layout_constraintBottom_toBottomOf="@id/longitude"
-                app:layout_constraintTop_toTopOf="@id/latitude"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/background"
-                app:srcCompat="@drawable/ic_location_on_black_24dp" />
-
-            <TextView
-                android:id="@+id/latitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_16"
-                android:layout_marginTop="@dimen/margin_20"
-                android:text="Latitude"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintLeft_toRightOf="@id/locationIcon"
-                app:layout_constraintTop_toBottomOf="@id/background" />
-            <TextView
-                android:id="@+id/location_lat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_16"
-                android:layout_marginTop="@dimen/margin_20"
-                android:text="NS"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintLeft_toRightOf="@id/latitude"
-                app:layout_constraintTop_toBottomOf="@id/background" />
-
-            <TextView
-                android:id="@+id/longitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_16"
-                android:layout_marginTop="@dimen/margin_20"
-                android:text="Longitude"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintLeft_toRightOf="@id/locationIcon"
-                app:layout_constraintTop_toBottomOf="@id/location_lat" />
-
-            <TextView
-                android:id="@+id/location_long"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_16"
-                android:layout_marginTop="@dimen/margin_20"
-                android:text="EW"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                app:layout_constraintLeft_toRightOf="@id/longitude"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/location_lat" />
-
-            <View
-                android:id="@+id/locationDivider"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_margin="@dimen/margin_16"
-                android:background="@color/grey"
-                app:layout_constraintTop_toBottomOf="@id/location_long" />
-
             <ImageView
                 android:id="@+id/calendarIcon"
                 android:layout_width="@dimen/size_30"
                 android:layout_height="@dimen/size_30"
                 android:layout_margin="@dimen/margin_16"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/locationDivider"
+                app:layout_constraintTop_toBottomOf="@id/background"
                 app:srcCompat="@drawable/ic_event" />
 
             <TextView
@@ -127,7 +60,7 @@
                 android:layout_marginTop="@dimen/margin_20"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintLeft_toRightOf="@id/calendarIcon"
-                app:layout_constraintTop_toBottomOf="@id/locationDivider" />
+                app:layout_constraintTop_toBottomOf="@id/background" />
 
             <View
                 android:id="@+id/calendarDivider"
@@ -196,8 +129,34 @@
                 app:layout_constraintLeft_toRightOf="@id/count"
                 app:layout_constraintTop_toBottomOf="@id/timeDivider" />
 
+            <ImageView
+                android:id="@+id/locationIcon"
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_30"
+                android:layout_marginLeft="@dimen/margin_16"
+                android:layout_marginRight="@dimen/margin_16"
+                android:layout_marginTop="@dimen/margin_20"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/locationTv"
+                app:layout_constraintTop_toBottomOf="@id/countTv"
+                app:srcCompat="@drawable/ic_location" />
+            <TextView
+                android:id="@+id/locationTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:text=""
+                android:lineHeight="24sp"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginRight="24dp"
+                android:layout_marginEnd="@dimen/margin_24"
+                android:layout_marginBottom="@dimen/margin_16"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintLeft_toRightOf="@id/locationIcon"
+                app:layout_constraintTop_toBottomOf="@id/count" />
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/shareFab"
+                android:id="@+id/locationFab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/margin_16"
@@ -205,7 +164,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/background"
                 app:layout_constraintTop_toBottomOf="@id/background"
                 app:layout_constraintRight_toRightOf="parent"
-                app:srcCompat="@drawable/ic_share_white" />
+                app:srcCompat="@drawable/ic_baseline_location_on_24" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

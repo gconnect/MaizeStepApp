@@ -63,6 +63,12 @@ class AfricanWormFragment : Fragment() {
         binding.toolbar.setNavigationOnClickListener{
             findNavController().popBackStack()
         }
+        binding.swipe.setOnRefreshListener {
+            setData()
+            showMessage()
+            showProgress()
+            binding.swipe.isRefreshing = false
+        }
         return binding.root
     }
 
@@ -82,7 +88,7 @@ class AfricanWormFragment : Fragment() {
      * The [setData] sets the data on the recyclerview
      */
     private fun setData(){
-        africanArmyWormViewModel.africanArmyList.observe(viewLifecycleOwner, Observer {
+        africanArmyWormViewModel.africanArmyList("AAW").observe(viewLifecycleOwner, Observer {
             Log.d(TAG , "captured $it")
             if(it.isNotEmpty()){
                 africanRecyclerView.visibility = View.VISIBLE

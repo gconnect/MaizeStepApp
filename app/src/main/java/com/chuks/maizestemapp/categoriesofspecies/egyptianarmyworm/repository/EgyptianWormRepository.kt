@@ -10,7 +10,7 @@ interface EgyptianWormRepository {
     /**
      * This [getEgyptianArmyWorm] and return a liveData of Insects
      * */
-    fun getEgyptianArmyWorm() : LiveData<List<Insect>>
+    fun getEgyptianArmyWorm(name:String) : LiveData<List<Insect>>
 
     /**
      * This [requestAfricanArmyWorm] and insert into the database
